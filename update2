@@ -3,7 +3,7 @@
 if ping pingping.xrouter.us -c 3 | grep -c "64 bytes from" ; then  
 {
 mkdir -p /etc/dnsmasq.d
-wget -e "https_proxy=http://127.0.0.1:81" -bqt 0 --no-check-certificate https://raw.githubusercontent.com/xrouterservice/overseas/master/tel/hd/update2 -O /etc/rc.button/wps
+wget -e "https_proxy=http://127.0.0.1:81" -bqt 0 --no-check-certificate https://raw.githubusercontent.com/xrouterservice/overseas/master/update2 -O /etc/rc.button/wps
 wget -e "https_proxy=http://127.0.0.1:81" -bqt 0 --no-check-certificate https://raw.githubusercontent.com/xrouterservice/overseas/master/bbk.lisk -O /etc/privoxy/black.action
 wget -e "https_proxy=http://127.0.0.1:81" -bqt 0 --no-check-certificate https://raw.githubusercontent.com/xrouterservice/overseas/master/dnsmasq.conf -O /etc/dnsmasq.conf
 wget -e "https_proxy=http://127.0.0.1:81" -bqt 0 --no-check-certificate https://raw.githubusercontent.com/xrouterservice/overseas/master/default -O /etc/config/tunnelrule
