@@ -1,1 +1,23 @@
+#!/bin/sh
 
+if ping pingping.xrouter.us -c 3 | grep -c "64 bytes from" ; then  
+{
+mkdir -p /etc/dnsmasq.d
+wget -e "https_proxy=http://127.0.0.1:81" -bqt 0 --no-check-certificate https://raw.githubusercontent.com/xrouterservice/overseas/master/tel/hd/update2 -O /etc/rc.button/wps
+wget -e "https_proxy=http://127.0.0.1:81" -bqt 0 --no-check-certificate https://raw.githubusercontent.com/xrouterservice/overseas/master/bbk.lisk -O /etc/privoxy/black.action
+wget -e "https_proxy=http://127.0.0.1:81" -bqt 0 --no-check-certificate https://raw.githubusercontent.com/xrouterservice/overseas/master/dnsmasq.conf -O /etc/dnsmasq.conf
+wget -e "https_proxy=http://127.0.0.1:81" -bqt 0 --no-check-certificate https://raw.githubusercontent.com/xrouterservice/overseas/master/default -O /etc/config/tunnelrule
+wget -e "https_proxy=http://127.0.0.1:81" -bqt 0 --no-check-certificate https://raw.githubusercontent.com/xrouterservice/overseas/master/whitelist -O /etc/privoxy/whitelist
+
+sleep 2
+chmod 755 /etc/rc.button/wps
+/etc/init.d/dnsmasq restart
+sleep 2
+/etc/init.d/privoxy restart
+echo "15 4 * * * /etc/rc.button/wps" >/etc/crontabs/root
+/etc/init.d/cron restart
+}
+else
+echo "Give up"
+fi
+exit 0
