@@ -1,1 +1,5 @@
-
+config default
+	option protocol 'tcp'
+	option ports '443'
+	option remark 'ceair'
+	option dsthost 'www.ceairgroup.com'
